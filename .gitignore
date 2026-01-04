@@ -1,15 +1,27 @@
-# Backend Python 
-
-.vscode
-.idea
+# =========================
+# Global editor & OS junk
+# =========================
+.vscode/
+.idea/
 .DS_Store
-staticfiles/
+
+# =========================
+# Backend (Django in /api)
+# =========================
+
+# Env files
 api/.envs/*
 !api/.envs/.env.example
+
 # Byte-compiled / optimized / DLL files
+api/__pycache__/
 __pycache__/
-*.py[codz]
+*.py[cod]
 *$py.class
+
+# Django collected static + media
+api/staticfiles/
+api/media/
 
 # C extensions
 *.so
@@ -66,8 +78,10 @@ cover/
 # Django stuff:
 *.log
 local_settings.py
-db.sqlite3
-db.sqlite3-journal
+
+# SQLite database
+api/db.sqlite3
+api/db.sqlite3-journal
 
 # Flask stuff:
 instance/
@@ -223,6 +237,6 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# -----------------------------------------------
-
-# Frontend React & Next
+# =========================
+# Frontend (React / Next)
+# =========================
