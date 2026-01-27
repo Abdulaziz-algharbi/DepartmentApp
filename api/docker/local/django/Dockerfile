@@ -32,10 +32,18 @@ WORKDIR ${APP_HOME}
 RUN apt-get update && apt-get install --no-install-recommends -y \
     sudo git bash-completion nano ssh
 
-RUN addgroup --system django && \
-    adduser --system --ingroup django django && \
-    mkdir -p ${APP_HOME}/staticfiles &&\
-    chown django:django ${APP_HOME}/staticfiles && \
+ARG UID=1000
+ARG GID=1000
+
+RUN set -eux; \
+    if ! getent group django >/dev/null; then \
+        addgroup --gid ${GID} django; \
+    fi; \
+    if ! id -u django >/dev/null 2>&1; then \
+        adduser --uid ${UID} --gid ${GID} --disabled-password --gecos "" django; \
+    fi; \
+    mkdir -p ${APP_HOME}/staticfiles; \
+    chown django:django ${APP_HOME}/staticfiles; \
     chmod 775 ${APP_HOME}/staticfiles
 
 RUN apt-get update && apt-get install --no-install-recommends -y \

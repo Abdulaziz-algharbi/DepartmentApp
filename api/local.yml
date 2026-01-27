@@ -3,6 +3,9 @@ services:
     build:
       context: .
       dockerfile: ./docker/local/django/Dockerfile
+      args:
+        UID: ${UID}
+        GID: ${GID}
     image: department_prod_api
     container_name: department_prod_api
     volumes:
