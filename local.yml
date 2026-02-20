@@ -1,20 +1,17 @@
 services:
   api: &api
     build:
-      context: .
-      dockerfile: ./docker/local/django/Dockerfile
-      args:
-        UID: ${UID}
-        GID: ${GID}
+      context: ./api
+      dockerfile: docker/local/django/Dockerfile
     image: department_prod_api
     container_name: department_prod_api
     volumes:
-      - .:/app:z
+      - ./api:/app:z
       - staticfiles:/app/staticfiles
     ports:
       - "8000:8000"
     env_file:
-      - ./.envs/.env.local
+      - ./api/.envs/.env.local
     depends_on:
       - postgres
       - mailpit
@@ -24,8 +21,8 @@ services:
 
   postgres:
     build:
-      context: .
-      dockerfile: ./docker/local/postgres/Dockerfile
+      context: ./api
+      dockerfile: docker/local/postgres/Dockerfile
     image: department_prod_postgres
     container_name: department_prod_postgres
     ports:
@@ -33,7 +30,7 @@ services:
     volumes:
       - department_prod_postgres_data:/var/lib/postgresql/data
     env_file:
-      - ./.envs/.env.local
+      - ./api/.envs/.env.local
     networks:
       - department_prod_nw
 
@@ -52,9 +49,22 @@ services:
       MP_SMTP_AUTH_ALLOW_INSECURE: 1
     networks:
       - department_prod_nw
+
+  client:
+    build:
+      context: ./client
+      dockerfile: docker/local/Dockerfile
+    container_name: department_client
+    image: department_client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    networks:
+      - department_prod_nw
 networks:
   department_prod_nw:
-    external: true
 
 volumes:
   department_prod_postgres_data: {}
