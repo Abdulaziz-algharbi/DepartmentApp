@@ -25,19 +25,8 @@ class GenericJSONRenderer(JSONRenderer):
         status_code = response.status_code
 
         # Handle empty responses (e.g., DELETE 204)
-        if data is None:
-            return super().reder(data, accepted_media_type, renderer_context)
-
-        # Handle non-dict responses safely (lists, strings, etc.)
-        if not isinstance(data, dict):
-            wrapped_data = {
-                "status_code": status_code,
-                self._get_object_label(view): data,
-            }
-            return super().render(wrapped_data, accepted_media_type, renderer_context)
-
         # Let DRF handle errors normally
-        if "errors" in data:
+        if data is None or "errors" in data:
             return super().render(data, accepted_media_type, renderer_context)
 
         # standard success response
