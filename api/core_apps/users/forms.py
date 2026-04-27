@@ -29,7 +29,7 @@ class UserCreationForm(admin_forms.UserCreationForm):
 
     def clean_username(self) -> str:
         username = self.cleaned_data["username"]
-        if User.objects.filter(username=username).exists:
+        if User.objects.filter(username=username).exists():
             raise forms.ValidationError(
                 self.error_messages["duplicate_username"])
         return username
