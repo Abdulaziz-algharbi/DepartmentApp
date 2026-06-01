@@ -5,4 +5,11 @@
 @theme {
 	--font-openSans: var(--font-openSans);
 	--font-robotoSlab: var(--font-robotoSlab);
+	--color-asparagus: #60992d;
+	--color-platinum: #e5e4e2;
+	--color-electricIndigo: #6f00ff;
+}
+
+.flex-center {
+	@apply flex items-center justify-center;
 }
