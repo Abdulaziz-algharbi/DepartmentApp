@@ -2,12 +2,15 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
 	--font-openSans: var(--font-openSans);
 	--font-robotoSlab: var(--font-robotoSlab);
 	--color-asparagus: #60992d;
 	--color-platinum: #e5e4e2;
 	--color-electricIndigo: #6f00ff;
+	--color-pumpkin: #ff7518;
 }
 
 .flex-center {
