@@ -16,6 +16,7 @@
 	--color-veryBlack: #000000;
 	--color-babyPowder: #fefefa;
 	--color-richBlack: #010203;
+	--color-ballonWhite: #faf9f6;
 }
 
 .flex-center {
@@ -24,4 +25,51 @@
 
 .h2-bold {
 	@apply text-[24px] leading-[42px] font-bold tracking-tighter;
+}
+
+.electricIndigo-gradient {
+	background: rgb(2, 0, 36);
+	background: linear-gradient(
+		130deg,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(102, 16, 242, 1) 100%,
+		rgba(0, 212, 255, 1) 100%
+	);
+}
+
+.color-invert {
+	@apply invert dark:invert-0;
+}
+
+.base-medium {
+	@apply text-[19px] leading-[25.2px] font-medium;
+}
+
+.base-bold {
+	@apply text-[19px] leading-[140%] font-bold;
+}
+
+.invert-colors {
+	@apply invert dark:invert-0;
+}
+
+.small-medium {
+	@apply text-[14px] leading-[15.6px] font-medium;
+}
+
+.light-border-2 {
+	@apply border-richBlack dark:border-ballonWhite;
+}
+.btn-tertiary {
+	@apply bg-platinum dark:bg-richBlack;
+}
+
+.lime-gradient {
+	background: rgb(2, 0, 36);
+	background: linear-gradient(
+		137deg,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(132, 204, 22, 1) 100%,
+		rgba(0, 212, 255, 1) 100%
+	);
 }
