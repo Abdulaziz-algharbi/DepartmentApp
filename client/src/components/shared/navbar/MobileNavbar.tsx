@@ -36,7 +36,7 @@ function LeftNavContent() {
 								className={`${isActive ? "" : "color-invert"}`}
 							/>
 							<p
-								className={`${isActive ? "base-bold text-gray-100" : "base-medium text-veryBlack"} `}
+								className={`${isActive ? "base-bold text-babyPowder" : "base-medium text-veryBlack"} `}
 							>
 								{linkItem.label}
 							</p>
@@ -75,12 +75,12 @@ const MobileNavbar = () => {
 					<SheetClose asChild>
 						<SheetFooter>
 							<Link href="/register">
-								<Button className="electricIndigo-gradient small-medium light-border-2 btn-tertiary text-baby_rich mt-4 min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none">
+								<Button className="electricIndigo-gradient small-medium light-border-2 btn-tertiary text-babyPowder mt-4 min-h-[41px] w-full cursor-pointer rounded-lg border px-4 py-3 shadow-none">
 									Register
 								</Button>
 							</Link>
 							<Link href="/login">
-								<Button className="lime-gradient small-medium light-border-2 btn-tertiary text-baby_rich min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none">
+								<Button className="lime-gradient small-medium light-border-2 btn-tertiary text-babyPowder min-h-[41px] w-full cursor-pointer rounded-lg border px-4 py-3 shadow-none">
 									Login
 								</Button>
 							</Link>
